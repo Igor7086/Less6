@@ -15,9 +15,10 @@ book_check_response = requests.get(url=host + book_url+'/'+str(book_id))
 book_check = book_check_response.json()
 
 # проверяем наличие
-
-assert body_created_book["title"] == book_check["title"]
-assert body_created_book["author"] == book_check["author"]
+for i in body_created_book:
+    assert body_created_book[i] == book_check[i]
+# assert body_created_book["title"] == book_check["title"]
+# assert body_created_book["author"] == book_check["author"]
 print(book_check["title"] + ' ' + book_check["author"])
 
 # вносим изменения
